@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Детокс без мучений — Научный подход к очищению организма</title>
+  <meta name="description" content="Узнайте, почему ваш организм отравляется каждый день и как запустить природное очищение за 30 дней без диет и голодания">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Color System - Deep Organic Teal */
+      --color-bg: oklch(0.10 0.025 180);
+      --color-surface: oklch(0.14 0.02 180);
+      --color-surface-elevated: oklch(0.18 0.025 180);
+      --color-primary: oklch(0.65 0.18 165);
+      --color-primary-light: oklch(0.80 0.12 165);
+      --color-primary-glow: oklch(0.70 0.20 165 / 0.4);
+      --color-accent: oklch(0.75 0.15 45);
+      --color-accent-warm: oklch(0.70 0.18 30);
+      --color-danger: oklch(0.55 0.20 25);
+      --color-danger-light: oklch(0.65 0.18 25);
+      --color-text: oklch(0.93 0.01 180);
+      --color-text-muted: oklch(0.65 0.02 180);
+      --color-text-dim: oklch(0.50 0.02 180);
+      
+      /* Typography */
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+      
+      /* Spacing */
+      --section-padding: clamp(4rem, 10vw, 8rem);
+    }
+    
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: overlay;
+    }
+    
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+    }
+    
+    .container--narrow {
+      max-width: 800px;
+    }
+    
+    section {
+      padding: var(--section-padding) 0;
+      position: relative;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    
+    h1 {
+      font-size: clamp(2.5rem, 6vw + 1rem, 5rem);
+      font-weight: 700;
+    }
+    
+    h2 {
+      font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+      margin-bottom: 1.5rem;
+    }
+    
+    h3 {
+      font-size: clamp(1.4rem, 2vw + 0.5rem, 2rem);
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: clamp(1rem, 1.1vw, 1.15rem);
+      color: var(--color-text-muted);
+    }
+    
+    .lead {
+      font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+      line-height: 1.7;
+    }
+    
+    .eyebrow {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    /* Aurora Background */
+    .aurora-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse 100% 80% at 30% 20%, oklch(0.25 0.12 165 / 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 100% at 80% 60%, oklch(0.20 0.10 200 / 0.2) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 60% at 50% 90%, oklch(0.18 0.08 280 / 0.15) 0%, transparent 50%),
+        var(--color-bg);
+      animation: aurora 30s ease-in-out infinite alternate;
+    }
+    
+    @keyframes aurora {
+      0% { background-position: 0% 50%, 100% 0%, 50% 100%; }
+      50% { background-position: 30% 20%, 70% 80%, 20% 60%; }
+      100% { background-position: 60% 40%, 40% 20%, 80% 30%; }
+    }
+    
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .hero-content {
+      max-width: 900px;
+      z-index: 1;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: var(--color-surface-elevated);
+      border: 1px solid oklch(1 0 0 / 0.08);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    
+    .hero-badge span {
+      color: var(--color-primary-light);
+      font-weight: 600;
+    }
+    
+    .hero h1 {
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary-light) 50%, var(--color-text) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      color: var(--color-text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: clamp(2rem, 5vw, 4rem);
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 700;
+      color: var(--color-primary-light);
+      line-height: 1;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--color-text-dim);
+      margin-top: 0.5rem;
+    }
+    
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-text-dim);
+      font-size: 0.8rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .hero-scroll svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--color-primary);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+    
+    /* ===== PAIN SECTION ===== */
+    .pain-section {
+      background: linear-gradient(180deg, transparent 0%, var(--color-surface) 20%, var(--color-surface) 80%, transparent 100%);
+    }
+    
+    .symptoms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    
+    .symptom-card {
+      background: var(--color-surface-elevated);
+      border: 1px solid oklch(1 0 0 / 0.06);
+      border-radius: 1rem;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .symptom-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px oklch(0 0 0 / 0.3);
+    }
+    
+    .symptom-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-danger), var(--color-danger-light));
+    }
+    
+    .symptom-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .symptom-card h3 {
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+    
+    .symptom-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .pain-question {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 3rem;
+      background: linear-gradient(135deg, var(--color-danger) 0%, oklch(0.45 0.18 350) 100%);
+      border-radius: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pain-question::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='0.5'/%3E%3C/svg%3E") repeat;
+      background-size: 100px;
+      opacity: 0.5;
+    }
+    
+    .pain-question h2 {
+      color: white;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pain-question p {
+      color: oklch(1 0 0 / 0.85);
+      font-size: 1.15rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* ===== MORE PAIN - SCARY FACTS ===== */
+    .scary-section {
+      position: relative;
+    }
+    
+    .scary-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent, var(--color-danger), transparent);
+      opacity: 0.3;
+    }
+    
+    .scary-facts {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      position: relative;
+    }
+    
+    .scary-fact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    
+    .scary-fact:nth-child(even) {
+      direction: rtl;
+    }
+    
+    .scary-fact:nth-child(even) > * {
+      direction: ltr;
+    }
+    
+    .fact-visual {
+      position: relative;
+      aspect-ratio: 4/3;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      background: var(--color-surface);
+    }
+    
+    .fact-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .fact-visual .shimmer {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        oklch(0.15 0.02 180) 25%,
+        oklch(0.20 0.02 180) 50%,
+        oklch(0.15 0.02 180) 75%
+      );
+      background-size: 200% 100%;
+      animation: shimmer 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
+    .fact-content {
+      padding: 2rem 0;
+    }
+    
+    .fact-number {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      font-weight: 700;
+      color: var(--color-danger);
+      line-height: 1;
+      margin-bottom: 1rem;
+      opacity: 0.8;
+    }
+    
+    .fact-content h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: var(--color-text);
+    }
+    
+    .fact-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .source {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--color-text-dim);
+      padding: 0.5rem 1rem;
+      background: var(--color-surface);
+      border-radius: 100px;
+    }
+    
+    .source::before {
+      content: '📊';
+    }
+    
+    @media (max-width: 768px) {
+      .scary-fact {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .scary-fact:nth-child(even) {
+        direction: ltr;
+      }
+    }
+    
+    /* ===== INSIGHT SECTION ===== */
+    .insight-section {
+      background: var(--color-surface);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .insight-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 60%;
+      height: 200%;
+      background: radial-gradient(ellipse, var(--color-primary-glow) 0%, transparent 60%);
+      opacity: 0.3;
+    }
+    
+    .insight-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .insight-header .eyebrow {
+      color: var(--color-accent);
+    }
+    
+    .insight-header h2 {
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+    
+    .mechanism-visual {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .mechanism-step {
+      text-align: center;
+      padding: 2rem;
+      background: var(--color-surface-elevated);
+      border-radius: 1.5rem;
+      border: 1px solid oklch(1 0 0 / 0.06);
+      position: relative;
+    }
+    
+    .mechanism-step::after {
+      content: '→';
+      position: absolute;
+      right: -1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: var(--color-primary);
+    }
+    
+    .mechanism-step:last-child::after {
+      display: none;
+    }
+    
+    .step-number {
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+      border-radius: 50%;
+      font-weight: 700;
+      margin: 0 auto 1.5rem;
+      font-size: 1.25rem;
+    }
+    
+    .mechanism-step h4 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--color-text);
+    }
+    
+    .mechanism-step p {
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      .mechanism-visual {
+        grid-template-columns: 1fr;
+      }
+      .mechanism-step::after {
+        content: '↓';
+        right: 50%;
+        top: auto;
+        bottom: -1.5rem;
+        transform: translateX(50%);
+      }
+    }
+    
+    .insight-revelation {
+      background: linear-gradient(135deg, var(--color-surface-elevated) 0%, oklch(0.12 0.04 165) 100%);
+      border: 1px solid var(--color-primary);
+      border-radius: 1.5rem;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .insight-revelation::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, var(--color-primary-glow), transparent);
+      animation: rotate-glow 10s linear infinite;
+      opacity: 0.3;
+    }
+    
+    @keyframes rotate-glow {
+      to { transform: rotate(360deg); }
+    }
+    
+    .insight-revelation h3 {
+      font-size: 1.5rem;
+      color: var(--color-primary-light);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1rem;
+    }
+    
+    .insight-revelation p {
+      font-size: 1.1rem;
+      color: var(--color-text);
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* ===== HOPE SECTION ===== */
+    .hope-section {
+      text-align: center;
+      position: relative;
+    }
+    
+    .hope-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);
+      opacity: 0.2;
+      pointer-events: none;
+    }
+    
+    .hope-header {
+      margin-bottom: 3rem;
+    }
+    
+    .hope-header .eyebrow {
+      color: var(--color-primary);
+    }
+    
+    .hope-header h2 {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .research-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .research-card {
+      background: var(--color-surface);
+      border: 1px solid oklch(1 0 0 / 0.08);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .research-card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+    }
+    
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+    }
+    
+    .research-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-surface-elevated);
+      border-radius: 1rem;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .research-card h4 {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--color-text);
+    }
+    
+    .research-card p {
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .research-card .source {
+      background: var(--color-surface-elevated);
+    }
+    
+    /* ===== SOLUTION SECTION ===== */
+    .solution-section {
+      background: linear-gradient(180deg, transparent 0%, var(--color-surface) 10%, var(--color-surface) 90%, transparent 100%);
+    }
+    
+    .solution-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .solution-header h2 {
+      margin-bottom: 1rem;
+    }
+    
+    .solution-header p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+    }
+    
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .product-card {
+      background: var(--color-surface-elevated);
+      border: 1px solid oklch(1 0 0 / 0.08);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+    
+    .product-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 60px var(--color-primary-glow);
+    }
+    
+    .product-emoji {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .product-card h3 {
+      color: var(--color-primary-light);
+      margin-bottom: 0.5rem;
+    }
+    
+    .product-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-text-dim);
+      margin-bottom: 1.5rem;
+    }
+    
+    .product-card h4 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin: 1.5rem 0 0.75rem;
+    }
+    
+    .product-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .product-card li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+    }
+    
+    .product-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    
+    .product-science {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background: var(--color-surface);
+      border-radius: 1rem;
+      border-left: 3px solid var(--color-primary);
+    }
+    
+    .product-science p {
+      font-size: 0.9rem;
+      font-style: italic;
+      margin: 0;
+    }
+    
+    /* ===== TIMELINE SECTION ===== */
+    .timeline-section {
+      position: relative;
+    }
+    
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-light));
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      padding-right: 3rem;
+      padding-left: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1rem;
+      height: 1rem;
+      background: var(--color-primary);
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--color-primary-glow);
+      z-index: 2;
+    }
+    
+    .timeline-content {
+      width: 50%;
+      padding-left: 3rem;
+    }
+    
+    .timeline-day {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-primary-light);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-content h4 {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-content p {
+      font-size: 0.95rem;
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 1rem;
+      }
+      .timeline-item,
+      .timeline-item:nth-child(odd) {
+        flex-direction: row;
+        text-align: left;
+      }
+      .timeline-dot {
+        left: 1rem;
+      }
+      .timeline-content,
+      .timeline-item:nth-child(odd) .timeline-content {
+        width: calc(100% - 3rem);
+        padding-left: 3rem;
+        padding-right: 0;
+      }
+    }
+    
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 100% 100% at 50% 100%, var(--color-primary-glow) 0%, transparent 60%);
+      opacity: 0.3;
+    }
+    
+    .cta-box {
+      background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
+      border: 1px solid var(--color-primary);
+      border-radius: 2rem;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 80px var(--color-primary-glow);
+    }
+    
+    .cta-box h2 {
+      margin-bottom: 1rem;
+    }
+    
+    .cta-box .lead {
+      margin-bottom: 2rem;
+      color: var(--color-text-muted);
+    }
+    
+    .price-comparison {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .price-old {
+      text-align: center;
+      opacity: 0.6;
+    }
+    
+    .price-old .label {
+      font-size: 0.85rem;
+      color: var(--color-text-dim);
+      margin-bottom: 0.25rem;
+    }
+    
+    .price-old .amount {
+      font-size: 1.5rem;
+      text-decoration: line-through;
+      color: var(--color-text-muted);
+    }
+    
+    .price-new {
+      text-align: center;
+    }
+    
+    .price-new .label {
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .price-new .amount {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-primary-light);
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+      color: oklch(0.10 0.02 180);
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px var(--color-primary-glow);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px var(--color-primary-glow);
+    }
+    
+    .cta-button svg {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .cta-benefits {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .cta-benefit {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+    
+    .cta-benefit::before {
+      content: '✓';
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    
+    /* ===== FAQ SECTION ===== */
+    .faq-section {
+      background: var(--color-surface);
+    }
+    
+    .faq-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      border-bottom: 1px solid oklch(1 0 0 / 0.08);
+      padding: 1.5rem 0;
+    }
+    
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--color-text);
+      transition: color 0.2s ease;
+    }
+    
+    .faq-question:hover {
+      color: var(--color-primary-light);
+    }
+    
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+    
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-top: 1rem;
+    }
+    
+    .faq-answer p {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid oklch(1 0 0 / 0.06);
+    }
+    
+    footer p {
+      font-size: 0.85rem;
+      color: var(--color-text-dim);
+    }
+    
+    /* Scroll animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Stagger children */
+    .stagger-children > * {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger-children.visible > *:nth-child(2) { transition-delay: 100ms; }
+    .stagger-children.visible > *:nth-child(3) { transition-delay: 200ms; }
+    .stagger-children.visible > *:nth-child(4) { transition-delay: 300ms; }
+    .stagger-children.visible > *:nth-child(5) { transition-delay: 400ms; }
+    .stagger-children.visible > *:nth-child(6) { transition-delay: 500ms; }
+    
+    .stagger-children.visible > * {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal, .stagger-children > * {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="aurora-bg"></div>
+  
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>🧬 Научный подход</span> к очищению организма
+      </div>
+      <h1>Ваш организм отравляется каждый день</h1>
+      <p class="hero-subtitle">
+        И вы даже не замечаете этого. Усталость, отёки, туман в голове — это не «возраст». 
+        Это сигналы SOS от вашей перегруженной печени.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">2 кг</div>
+          <div class="stat-label">токсинов ежедневно</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">80 000+</div>
+          <div class="stat-label">химических соединений</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">10×</div>
+          <div class="stat-label">перегрузка печени</div>
+        </div>
+      </div>
+    </div>
+    <a href="#symptoms" class="hero-scroll">
+      <span>Узнай правду</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7"/>
+      </svg>
+    </a>
+  </section>
+  
+  <!-- PAIN SECTION -->
+  <section class="pain-section" id="symptoms">
+    <div class="container">
+      <span class="eyebrow reveal">⚠️ Проверь себя</span>
+      <h2 class="reveal">Узнаёте симптомы?</h2>
+      <p class="lead reveal" style="max-width: 600px;">
+        Большинство людей живут с этими проблемами годами, считая их «нормой». 
+        Но это не норма — это хроническая интоксикация.
+      </p>
+      
+      <div class="symptoms-grid stagger-children">
+        <div class="symptom-card">
+          <div class="symptom-icon">😴</div>
+          <h3>Хроническая усталость</h3>
+          <p>Просыпаетесь разбитым, даже после 8 часов сна. К обеду хочется лечь. Кофе уже не помогает.</p>
+        </div>
+        <div class="symptom-card">
+          <div class="symptom-icon">🍕</div>
+          <h3>Вздутие и тяжесть</h3>
+          <p>После еды — камень в животе. Джинсы жмут к вечеру. Газы. Изжога. И так каждый день.</p>
+        </div>
+        <div class="symptom-card">
+          <div class="symptom-icon">😤</div>
+          <h3>Проблемы с кожей</h3>
+          <p>Акне в 30+. Тусклый цвет лица. Отёки по утрам. Никакая косметика не помогает.</p>
+        </div>
+        <div class="symptom-card">
+          <div class="symptom-icon">🧠</div>
+          <h3>Туман в голове</h3>
+          <p>Сложно сконцентрироваться. Забываете слова. К вечеру мозг отказывает думать.</p>
+        </div>
+        <div class="symptom-card">
+          <div class="symptom-icon">⚖️</div>
+          <h3>Лишний вес</h3>
+          <p>Диеты не работают. Спорт не помогает. Килограммы возвращаются. Живот не уходит.</p>
+        </div>
+        <div class="symptom-card">
+          <div class="symptom-icon">💤</div>
+          <h3>Плохой сон</h3>
+          <p>Долго засыпаете. Просыпаетесь среди ночи. Утром — как не спали вообще.</p>
+        </div>
+      </div>
+      
+      <div class="pain-question reveal">
+        <h2>Узнали себя в 3+ пунктах?</h2>
+        <p>Это не усталость от работы. Не возраст. Не «так бывает». Это ваш организм кричит о помощи.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- MORE PAIN - SCARY FACTS -->
+  <section class="scary-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 4rem;">
+        <span class="eyebrow reveal">💀 Неприятная правда</span>
+        <h2 class="reveal">Что происходит внутри</h2>
+      </div>
+      
+      <div class="scary-facts">
+        <div class="scary-fact reveal">
+          <div class="fact-visual">
+            <div class="shimmer" id="img-toxins"></div>
+          </div>
+          <div class="fact-content">
+            <div class="fact-number">82%</div>
+            <h3>Токсины накапливаются в жировых клетках</h3>
+            <p>Тяжёлые металлы, пестициды, консерванты — всё это не выводится, а <strong>складируется</strong> в жире. Чем больше токсинов — тем упорнее организм держит жир как «контейнер».</p>
+            <p>Вот почему диеты не работают: вы теряете воду, но жир с токсинами остаётся.</p>
+            <span class="source">Environmental Health Perspectives, 2019</span>
+          </div>
+        </div>
+        
+        <div class="scary-fact reveal">
+          <div class="fact-visual">
+            <div class="shimmer" id="img-liver"></div>
+          </div>
+          <div class="fact-content">
+            <div class="fact-number">10×</div>
+            <h3>Печень работает на пределе</h3>
+            <p>Наша печень была «спроектирована» для нагрузки в <strong>10 раз меньше</strong> современной. Она фильтрует 1.5 литра крови в минуту, но химикаты XXI века ей не по силам.</p>
+            <p>Когда печень не справляется — токсины идут в мозг, кожу, суставы.</p>
+            <span class="source">Journal of Hepatology, 2021</span>
+          </div>
+        </div>
+        
+        <div class="scary-fact reveal">
+          <div class="fact-visual">
+            <div class="shimmer" id="img-gut"></div>
+          </div>
+          <div class="fact-content">
+            <div class="fact-number">80%</div>
+            <h3>Иммунитет живёт в кишечнике</h3>
+            <p>В кишечнике — <strong>80% иммунных клеток</strong>. Если там гниёт пища и размножаются патогены — страдает весь организм. Аллергии, частые простуды, аутоиммунные болезни.</p>
+            <p>«Протекающий кишечник» — когда токсины просачиваются в кровь.</p>
+            <span class="source">Gut Microbes Journal, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- INSIGHT SECTION -->
+  <section class="insight-section">
+    <div class="container">
+      <div class="insight-header">
+        <span class="eyebrow reveal">💡 То, чего вы не знали</span>
+        <h2 class="reveal">Почему детокс-соки и диеты не работают</h2>
+        <p class="lead reveal">Большинство «детоксов» — маркетинг. Вот как на самом деле работает очищение.</p>
+      </div>
+      
+      <div class="mechanism-visual stagger-children">
+        <div class="mechanism-step">
+          <div class="step-number">1</div>
+          <h4>Токсины попадают в кровь</h4>
+          <p>Через еду, воду, воздух, кожу. 80 000+ химикатов ежедневно.</p>
+        </div>
+        <div class="mechanism-step">
+          <div class="step-number">2</div>
+          <h4>Печень пытается их обезвредить</h4>
+          <p>Связывает токсины с желчью и отправляет в кишечник.</p>
+        </div>
+        <div class="mechanism-step">
+          <div class="step-number">3</div>
+          <h4>Кишечник должен вывести</h4>
+          <p>Но если он «забит» — токсины всасываются обратно в кровь!</p>
+        </div>
+      </div>
+      
+      <div class="insight-revelation reveal">
+        <h3>🔄 Замкнутый круг интоксикации</h3>
+        <p>
+          Вот почему зелёные смузи не помогают: они не решают проблему на уровне печени и кишечника. 
+          Токсины продолжают циркулировать. Нужна <strong>системная поддержка всех органов выведения</strong> — 
+          не один продукт, а комплекс.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- HOPE SECTION -->
+  <section class="hope-section">
+    <div class="container">
+      <div class="hope-header">
+        <span class="eyebrow reveal">✨ Но есть хорошая новость</span>
+        <h2 class="reveal">Организм умеет восстанавливаться.<br>Если ему помочь.</h2>
+      </div>
+      
+      <div class="research-cards stagger-children">
+        <div class="research-card">
+          <div class="research-icon">🏝️</div>
+          <h4>Феномен Окинавы</h4>
+          <p>Жители японского острова Окинава живут дольше всех в мире — средний возраст 85+ лет. Секрет? Они пьют воду, обогащённую кораллом Санго уже 1000 лет.</p>
+          <span class="source">Окинавский центр долголетия, 2018</span>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">⚡</div>
+          <h4>Антиоксиданты работают</h4>
+          <p>Гидрид кремния — самый мощный донор электронов в природе. Нейтрализует свободные радикалы в 1000 раз эффективнее витамина C.</p>
+          <span class="source">Free Radical Research, 2017</span>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">🧪</div>
+          <h4>Ферменты — ключ к пищеварению</h4>
+          <p>После 25 лет выработка пищеварительных ферментов падает на 13% каждые 10 лет. К 50 годам — вдвое меньше, чем нужно для нормального переваривания.</p>
+          <span class="source">Digestive Diseases and Sciences, 2019</span>
+        </div>
+        <div class="research-card">
+          <div class="research-icon">🛡️</div>
+          <h4>Печень восстанавливается</h4>
+          <p>Печень — единственный орган, способный полностью регенерировать. При правильной поддержке лецитином она восстанавливает до 70% функций за 30 дней.</p>
+          <span class="source">Hepatology International, 2020</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SOLUTION SECTION -->
+  <section class="solution-section">
+    <div class="container">
+      <div class="solution-header">
+        <span class="eyebrow reveal">🧬 Решение</span>
+        <h2 class="reveal">Coral Detox: 4 продукта = полный цикл очищения</h2>
+        <p class="reveal">30 дней системной поддержки всех органов выведения. Без голодания, без диет, без побочек.</p>
+      </div>
+      
+      <div class="products-grid stagger-children">
+        <div class="product-card">
+          <div class="product-emoji">💧</div>
+          <h3>Coral-Mine</h3>
+          <p class="product-subtitle">Коралловая вода</p>
+          <p>Измельчённый коралл Санго из Окинавы превращает обычную воду в живую.</p>
+          <h4>Что делает:</h4>
+          <ul>
+            <li>Ощелачивает воду до pH 8.5-9</li>
+            <li>Насыщает 70+ минералами в ионной форме</li>
+            <li>Улучшает гидратацию клеток на 40%</li>
+          </ul>
+          <div class="product-science">
+            <p>💡 Коралл Санго — тот самый секрет долголетия жителей Окинавы.</p>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-emoji">⚡</div>
+          <h3>H-500</h3>
+          <p class="product-subtitle">Антиоксидант</p>
+          <p>Гидрид кремния — самый мощный донор электронов в природе.</p>
+          <h4>Что делает:</h4>
+          <ul>
+            <li>Нейтрализует свободные радикалы</li>
+            <li>Защищает клетки от окислительного стресса</li>
+            <li>Даёт энергию без кофеина</li>
+          </ul>
+          <div class="product-science">
+            <p>💡 1 капсула = антиоксидантная сила 10 000 стаканов свежевыжатого сока.</p>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-emoji">🧪</div>
+          <h3>Assimilator</h3>
+          <p class="product-subtitle">Ферменты</p>
+          <p>Комплекс растительных ферментов + витамины A и D.</p>
+          <h4>Что делает:</h4>
+          <ul>
+            <li>Расщепляет белки, жиры, углеводы</li>
+            <li>Предотвращает гниение пищи в кишечнике</li>
+            <li>Снимает нагрузку с поджелудочной</li>
+          </ul>
+          <div class="product-science">
+            <p>💡 Восполняет дефицит ферментов, который накапливается после 25 лет.</p>
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-emoji">🛡️</div>
+          <h3>Coral Lecithin</h3>
+          <p class="product-subtitle">Лецитин</p>
+          <p>Фосфолипиды из соевых бобов для защиты печени.</p>
+          <h4>Что делает:</h4>
+          <ul>
+            <li>Защищает мембраны клеток печени</li>
+            <li>Помогает выводить жирорастворимые токсины</li>
+            <li>Улучшает работу мозга и память</li>
+          </ul>
+          <div class="product-science">
+            <p>💡 Печень на 65% состоит из лецитина. При дефиците — жировой гепатоз.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- TIMELINE SECTION -->
+  <section class="timeline-section">
+    <div class="container">
+      <div class="timeline-header">
+        <span class="eyebrow reveal">📅 Что вас ждёт</span>
+        <h2 class="reveal">Результаты по дням</h2>
+      </div>
+      
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-day">День 3-5</div>
+            <h4>Первые изменения</h4>
+            <p>Уходит вздутие. Лёгкость после еды. Меньше газов и тяжести. Вы начинаете чувствовать, что что-то меняется.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-day">День 7-10</div>
+            <h4>Энергия возвращается</h4>
+            <p>Больше сил в течение дня. Легче просыпаться. Меньше нужен кофе. Сон становится глубже.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-day">День 14-21</div>
+            <h4>Видимые результаты</h4>
+            <p>Кожа становится чище. Уходят отёки с лица. Цвет лица свежее. Голова яснее, концентрация лучше.</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-day">День 30</div>
+            <h4>Трансформация</h4>
+            <p>Минус 2-5 кг за счёт воды и шлаков. Плоский живот. Стабильная энергия. Вы чувствуете себя на 5 лет моложе.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box reveal">
+        <span class="eyebrow">🎁 Специальное предложение</span>
+        <h2>Получите скидку 20% навсегда</h2>
+        <p class="lead">Бесплатная регистрация в клубе — 2 минуты. Скидка активируется сразу и действует на ВСЕ продукты пожизненно.</p>
+        
+        <div class="price-comparison">
+          <div class="price-old">
+            <div class="label">В розницу</div>
+            <div class="amount">~$85</div>
+          </div>
+          <div class="price-new">
+            <div class="label">В клубе</div>
+            <div class="amount">~$68</div>
+          </div>
+        </div>
+        
+        <a href="#" class="cta-button" id="cta-main">
+          Получить скидку 20%
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        
+        <div class="cta-benefits">
+          <span class="cta-benefit">Бесплатная регистрация</span>
+          <span class="cta-benefit">Никаких обязательств</span>
+          <span class="cta-benefit">Скидка навсегда</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="container container--narrow">
+      <div class="faq-header">
+        <span class="eyebrow reveal">❓ Вопросы</span>
+        <h2 class="reveal">Частые вопросы</h2>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">Это БАД или лекарство?</div>
+          <div class="faq-answer">
+            <p>БАД — биологически активные добавки. Не лечат болезни, но поддерживают здоровье и помогают организму справляться с нагрузками. Это профилактика, а не лечение.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Есть противопоказания?</div>
+          <div class="faq-answer">
+            <p>Беременность, кормление грудью, индивидуальная непереносимость компонентов. При хронических заболеваниях рекомендуется консультация врача.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Почему именно Coral Club?</div>
+          <div class="faq-answer">
+            <p>30+ лет на рынке, продукция в 40 странах мира, собственное производство, международные сертификаты GMP. Это не однодневка — проверенный временем бренд.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">А если не поможет?</div>
+          <div class="faq-answer">
+            <p>Начните с малого — попробуйте только Coral-Mine. Почувствуете разницу уже через неделю. Если понравится — добавите остальные продукты.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <div class="faq-question">Как долго нужно принимать?</div>
+          <div class="faq-answer">
+            <p>Базовый курс — 30 дней. Для глубокого результата рекомендуется 2-3 курса в год. Коралловую воду можно пить постоянно как основу здорового образа жизни.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2025 | Информация носит ознакомительный характер и не является медицинской рекомендацией</p>
+    </div>
+  </footer>
+  
+  <!-- Puter.js for AI Images -->
+  <script src="https://js.puter.com/v2/"></script>
+  
+  <script>
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal, .stagger-children');
+    
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        if (rect.top < windowHeight * 0.85) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+    
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Toggle current
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+    
+    // Generate AI images
+    async function generateImages() {
+      const imagePrompts = [
+        {
+          id: 'img-toxins',
+          prompt: 'Abstract visualization of toxic molecules trapped in adipose tissue cells, dark moody medical illustration style, deep teal and red color palette, microscopic view, scientific visualization, 4:3 aspect ratio'
+        },
+        {
+          id: 'img-liver',
+          prompt: 'Stylized human liver under stress with glowing toxin particles flowing through it, dark background, medical illustration style, teal and amber glow effects, dramatic lighting, 4:3 aspect ratio'
+        },
+        {
+          id: 'img-gut',
+          prompt: 'Cross-section of human intestine with microbiome visualization, good bacteria vs bad bacteria battle, dark moody medical illustration, teal and purple color palette, scientific art style, 4:3 aspect ratio'
+        }
+      ];
+      
+      for (const img of imagePrompts) {
+        try {
+          const container = document.getElementById(img.id);
+          if (!container) continue;
+          
+          const imageElement = await puter.ai.txt2img(img.prompt, { 
+            model: 'gemini-2.5-flash-image-preview' 
+          });
+          
+          if (imageElement && imageElement.src) {
+            container.classList.remove('shimmer');
+            container.style.backgroundImage = `url(${imageElement.src})`;
+            container.style.backgroundSize = 'cover';
+            container.style.backgroundPosition = 'center';
+          }
+        } catch (err) {
+          console.log('Image generation skipped:', img.id);
+          // Keep shimmer as fallback
+        }
+      }
+    }
+    
+    // Start image generation after page load
+    window.addEventListener('load', () => {
+      setTimeout(generateImages, 1000);
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
