@@ -1029,7 +1029,7 @@
         </div>
         <div class="hero-visual">
           <div class="hero-image" id="hero-img">
-            <div class="shimmer"></div>
+            <img src="hero.jpg" alt="Здоровая женщина в окружении зелени">
           </div>
           <div class="floating-card card-1">
             <div class="icon">⚡</div>
@@ -1081,7 +1081,7 @@
       <div class="story-grid">
         <div class="story-image fade-in">
           <div class="story-image-main" id="story-img">
-            <div class="shimmer"></div>
+            <img src="story.png" alt="Анна после детокс-программы">
           </div>
           <div class="story-badge">
             <div class="value">-7 кг</div>
@@ -1381,9 +1381,6 @@
     </div>
   </footer>
   
-  <!-- Puter.js for AI Images -->
-  <script src="https://js.puter.com/v2/"></script>
-  
   <script>
     // ===== QUIZ LOGIC =====
     let currentQuestion = 1;
@@ -1480,48 +1477,6 @@
     }, { threshold: 0.1 });
     
     fadeElements.forEach(el => observer.observe(el));
-    
-    // ===== AI IMAGE GENERATION =====
-    async function generateImages() {
-      const images = [
-        {
-          id: 'hero-img',
-          prompt: 'Serene woman with glowing healthy skin, surrounded by soft green leaves and natural elements, wellness editorial photography style, soft natural lighting, peaceful expression, clean minimal composition, light beige and sage green color palette, magazine cover quality, 1:1 aspect ratio'
-        },
-        {
-          id: 'story-img',
-          prompt: 'Happy confident woman in her 30s, natural makeup, radiating health and energy, lifestyle portrait photography, soft window light, wearing casual white clothes, warm genuine smile, clean background with subtle green plants, wellness transformation, editorial style, 4:5 aspect ratio'
-        }
-      ];
-      
-      for (const img of images) {
-        try {
-          const container = document.getElementById(img.id);
-          if (!container) continue;
-          
-          const shimmer = container.querySelector('.shimmer');
-          
-          const imageElement = await puter.ai.txt2img(img.prompt, { 
-            model: 'gemini-2.5-flash-image-preview' 
-          });
-          
-          if (imageElement && imageElement.src) {
-            if (shimmer) shimmer.remove();
-            const imgTag = document.createElement('img');
-            imgTag.src = imageElement.src;
-            imgTag.alt = 'Wellness illustration';
-            container.appendChild(imgTag);
-          }
-        } catch (err) {
-          console.log('Image generation skipped:', img.id);
-        }
-      }
-    }
-    
-    // Start image generation
-    window.addEventListener('load', () => {
-      setTimeout(generateImages, 500);
-    });
     
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
