@@ -3,40 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Детокс без мучений — Научный подход к очищению организма</title>
-  <meta name="description" content="Узнайте, почему ваш организм отравляется каждый день и как запустить природное очищение за 30 дней без диет и голодания">
+  <title>Тест: Насколько зашлакован ваш организм?</title>
+  <meta name="description" content="Пройдите 2-минутный тест и узнайте уровень интоксикации вашего организма. Получите персональные рекомендации.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,400&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      /* Color System - Deep Organic Teal */
-      --color-bg: oklch(0.10 0.025 180);
-      --color-surface: oklch(0.14 0.02 180);
-      --color-surface-elevated: oklch(0.18 0.025 180);
-      --color-primary: oklch(0.65 0.18 165);
-      --color-primary-light: oklch(0.80 0.12 165);
-      --color-primary-glow: oklch(0.70 0.20 165 / 0.4);
-      --color-accent: oklch(0.75 0.15 45);
-      --color-accent-warm: oklch(0.70 0.18 30);
-      --color-danger: oklch(0.55 0.20 25);
-      --color-danger-light: oklch(0.65 0.18 25);
-      --color-text: oklch(0.93 0.01 180);
-      --color-text-muted: oklch(0.65 0.02 180);
-      --color-text-dim: oklch(0.50 0.02 180);
+      --color-bg: #FDFCFA;
+      --color-surface: #FFFFFF;
+      --color-surface-alt: #F7F5F2;
+      --color-primary: #2D8F6F;
+      --color-primary-light: #3DAA84;
+      --color-primary-dark: #1E6B52;
+      --color-accent: #E8B86D;
+      --color-accent-light: #F5D9A8;
+      --color-danger: #D95550;
+      --color-danger-light: #F8E1E0;
+      --color-text: #1A1A1A;
+      --color-text-muted: #5A5A5A;
+      --color-text-light: #8A8A8A;
+      --color-border: #E8E4DF;
       
-      /* Typography */
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Outfit', system-ui, sans-serif;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Nunito Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       
-      /* Spacing */
-      --section-padding: clamp(4rem, 10vw, 8rem);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
     }
     
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -51,349 +56,192 @@
       background: var(--color-bg);
       color: var(--color-text);
       line-height: 1.6;
-      overflow-x: hidden;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
     }
     
-    /* Grain overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.03;
-      pointer-events: none;
-      z-index: 9999;
-      mix-blend-mode: overlay;
-    }
-    
-    /* Layout */
     .container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 0 clamp(1rem, 4vw, 2rem);
+      padding: 0 24px;
     }
     
-    .container--narrow {
-      max-width: 800px;
+    /* ===== HEADER ===== */
+    .header {
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(253, 252, 250, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid var(--color-border);
     }
     
-    section {
-      padding: var(--section-padding) 0;
-      position: relative;
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     
-    /* Typography */
-    h1, h2, h3, h4 {
+    .logo {
       font-family: var(--font-display);
+      font-size: 1.5rem;
       font-weight: 600;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
+      color: var(--color-primary);
+      text-decoration: none;
     }
     
-    h1 {
-      font-size: clamp(2.5rem, 6vw + 1rem, 5rem);
-      font-weight: 700;
-    }
-    
-    h2 {
-      font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
-      margin-bottom: 1.5rem;
-    }
-    
-    h3 {
-      font-size: clamp(1.4rem, 2vw + 0.5rem, 2rem);
-      margin-bottom: 1rem;
-    }
-    
-    p {
-      font-size: clamp(1rem, 1.1vw, 1.15rem);
-      color: var(--color-text-muted);
-    }
-    
-    .lead {
-      font-size: clamp(1.15rem, 1.5vw, 1.35rem);
-      line-height: 1.7;
-    }
-    
-    .eyebrow {
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 100px;
       font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--color-primary);
-      margin-bottom: 1rem;
-      display: block;
     }
     
-    /* Aurora Background */
-    .aurora-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background:
-        radial-gradient(ellipse 100% 80% at 30% 20%, oklch(0.25 0.12 165 / 0.25) 0%, transparent 60%),
-        radial-gradient(ellipse 80% 100% at 80% 60%, oklch(0.20 0.10 200 / 0.2) 0%, transparent 55%),
-        radial-gradient(ellipse 60% 60% at 50% 90%, oklch(0.18 0.08 280 / 0.15) 0%, transparent 50%),
-        var(--color-bg);
-      animation: aurora 30s ease-in-out infinite alternate;
-    }
-    
-    @keyframes aurora {
-      0% { background-position: 0% 50%, 100% 0%, 50% 100%; }
-      50% { background-position: 30% 20%, 70% 80%, 20% 60%; }
-      100% { background-position: 60% 40%, 40% 20%, 80% 30%; }
-    }
-    
-    /* ===== HERO SECTION ===== */
+    /* ===== HERO ===== */
     .hero {
+      padding: 140px 0 80px;
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
     }
     
-    .hero-content {
-      max-width: 900px;
-      z-index: 1;
-    }
-    
-    .hero-badge {
-      display: inline-flex;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1.25rem;
-      background: var(--color-surface-elevated);
-      border: 1px solid oklch(1 0 0 / 0.08);
-      border-radius: 100px;
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
-      margin-bottom: 2rem;
-      backdrop-filter: blur(10px);
     }
     
-    .hero-badge span {
-      color: var(--color-primary-light);
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+    
+    .hero-content h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
       font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--color-text);
     }
     
-    .hero h1 {
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary-light) 50%, var(--color-text) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .hero-content h1 span {
+      color: var(--color-primary);
     }
     
-    .hero-subtitle {
-      font-size: clamp(1.2rem, 2vw, 1.5rem);
+    .hero-content .lead {
+      font-size: 1.15rem;
       color: var(--color-text-muted);
-      margin-bottom: 2.5rem;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+    
+    @media (max-width: 900px) {
+      .hero-content .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
     
     .hero-stats {
       display: flex;
-      justify-content: center;
-      gap: clamp(2rem, 5vw, 4rem);
-      margin-top: 4rem;
-      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 40px;
     }
     
-    .stat {
+    @media (max-width: 900px) {
+      .hero-stats {
+        justify-content: center;
+      }
+    }
+    
+    .stat-item {
       text-align: center;
     }
     
-    .stat-number {
+    .stat-value {
       font-family: var(--font-display);
-      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-size: 2rem;
       font-weight: 700;
-      color: var(--color-primary-light);
-      line-height: 1;
+      color: var(--color-primary);
     }
     
     .stat-label {
       font-size: 0.85rem;
-      color: var(--color-text-dim);
-      margin-top: 0.5rem;
+      color: var(--color-text-light);
     }
     
-    .hero-scroll {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
+    .cta-btn {
+      display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--color-text-dim);
-      font-size: 0.8rem;
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .hero-scroll svg {
-      width: 24px;
-      height: 24px;
-      stroke: var(--color-primary);
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(10px); }
-    }
-    
-    /* ===== PAIN SECTION ===== */
-    .pain-section {
-      background: linear-gradient(180deg, transparent 0%, var(--color-surface) 20%, var(--color-surface) 80%, transparent 100%);
-    }
-    
-    .symptoms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-    
-    .symptom-card {
-      background: var(--color-surface-elevated);
-      border: 1px solid oklch(1 0 0 / 0.06);
-      border-radius: 1rem;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .symptom-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px oklch(0 0 0 / 0.3);
-    }
-    
-    .symptom-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-danger), var(--color-danger-light));
-    }
-    
-    .symptom-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .symptom-card h3 {
-      color: var(--color-text);
-      margin-bottom: 0.75rem;
-      font-size: 1.25rem;
-    }
-    
-    .symptom-card p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    
-    .pain-question {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 3rem;
-      background: linear-gradient(135deg, var(--color-danger) 0%, oklch(0.45 0.18 350) 100%);
-      border-radius: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .pain-question::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='0.5'/%3E%3C/svg%3E") repeat;
-      background-size: 100px;
-      opacity: 0.5;
-    }
-    
-    .pain-question h2 {
+      gap: 12px;
+      padding: 18px 36px;
+      background: var(--color-primary);
       color: white;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(45, 143, 111, 0.3);
     }
     
-    .pain-question p {
-      color: oklch(1 0 0 / 0.85);
-      font-size: 1.15rem;
-      position: relative;
-      z-index: 1;
+    .cta-btn:hover {
+      background: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(45, 143, 111, 0.4);
     }
     
-    /* ===== MORE PAIN - SCARY FACTS ===== */
-    .scary-section {
-      position: relative;
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
     }
     
-    .scary-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 100%;
-      background: linear-gradient(to bottom, transparent, var(--color-danger), transparent);
-      opacity: 0.3;
+    .hero-note {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
     }
     
-    .scary-facts {
-      display: flex;
-      flex-direction: column;
-      gap: 4rem;
+    .hero-visual {
       position: relative;
     }
     
-    .scary-fact {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    
-    .scary-fact:nth-child(even) {
-      direction: rtl;
-    }
-    
-    .scary-fact:nth-child(even) > * {
-      direction: ltr;
-    }
-    
-    .fact-visual {
-      position: relative;
-      aspect-ratio: 4/3;
-      border-radius: 1.5rem;
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius-xl);
       overflow: hidden;
-      background: var(--color-surface);
+      background: linear-gradient(135deg, var(--color-surface-alt), var(--color-border));
     }
     
-    .fact-visual img {
+    .hero-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
     
-    .fact-visual .shimmer {
-      position: absolute;
-      inset: 0;
+    .hero-image .shimmer {
+      width: 100%;
+      height: 100%;
       background: linear-gradient(
         90deg,
-        oklch(0.15 0.02 180) 25%,
-        oklch(0.20 0.02 180) 50%,
-        oklch(0.15 0.02 180) 75%
+        var(--color-surface-alt) 25%,
+        var(--color-surface) 50%,
+        var(--color-surface-alt) 75%
       );
       background-size: 200% 100%;
       animation: shimmer 1.5s ease-in-out infinite;
@@ -404,956 +252,1028 @@
       100% { background-position: -200% 0; }
     }
     
-    .fact-content {
-      padding: 2rem 0;
+    .floating-card {
+      position: absolute;
+      background: white;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-lg);
+      animation: float 4s ease-in-out infinite;
     }
     
-    .fact-number {
-      font-family: var(--font-display);
-      font-size: 5rem;
-      font-weight: 700;
-      color: var(--color-danger);
-      line-height: 1;
-      margin-bottom: 1rem;
-      opacity: 0.8;
+    .floating-card.card-1 {
+      top: 10%;
+      right: -20px;
+      animation-delay: 0s;
     }
     
-    .fact-content h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
+    .floating-card.card-2 {
+      bottom: 20%;
+      left: -20px;
+      animation-delay: 2s;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .floating-card .icon {
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+    
+    .floating-card .text {
+      font-size: 0.85rem;
+      font-weight: 600;
       color: var(--color-text);
     }
     
-    .fact-content p {
-      margin-bottom: 1.5rem;
+    .floating-card .subtext {
+      font-size: 0.75rem;
+      color: var(--color-text-light);
     }
     
-    .source {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      color: var(--color-text-dim);
-      padding: 0.5rem 1rem;
+    /* ===== PROBLEM SECTION ===== */
+    .problem-section {
+      padding: 100px 0;
       background: var(--color-surface);
-      border-radius: 100px;
     }
     
-    .source::before {
-      content: '📊';
-    }
-    
-    @media (max-width: 768px) {
-      .scary-fact {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .scary-fact:nth-child(even) {
-        direction: ltr;
-      }
-    }
-    
-    /* ===== INSIGHT SECTION ===== */
-    .insight-section {
-      background: var(--color-surface);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .insight-section::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 60%;
-      height: 200%;
-      background: radial-gradient(ellipse, var(--color-primary-glow) 0%, transparent 60%);
-      opacity: 0.3;
-    }
-    
-    .insight-header {
+    .section-header {
       text-align: center;
-      margin-bottom: 4rem;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 60px;
     }
     
-    .insight-header .eyebrow {
-      color: var(--color-accent);
+    .section-label {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--color-danger-light);
+      color: var(--color-danger);
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 100px;
+      margin-bottom: 20px;
     }
     
-    .insight-header h2 {
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
+    .section-label.green {
+      background: rgba(45, 143, 111, 0.1);
+      color: var(--color-primary);
     }
     
-    .mechanism-visual {
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .problem-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-bottom: 4rem;
-    }
-    
-    .mechanism-step {
-      text-align: center;
-      padding: 2rem;
-      background: var(--color-surface-elevated);
-      border-radius: 1.5rem;
-      border: 1px solid oklch(1 0 0 / 0.06);
-      position: relative;
-    }
-    
-    .mechanism-step::after {
-      content: '→';
-      position: absolute;
-      right: -1.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 2rem;
-      color: var(--color-primary);
-    }
-    
-    .mechanism-step:last-child::after {
-      display: none;
-    }
-    
-    .step-number {
-      width: 3rem;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-      border-radius: 50%;
-      font-weight: 700;
-      margin: 0 auto 1.5rem;
-      font-size: 1.25rem;
-    }
-    
-    .mechanism-step h4 {
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: var(--color-text);
-    }
-    
-    .mechanism-step p {
-      font-size: 0.9rem;
+      gap: 24px;
     }
     
     @media (max-width: 768px) {
-      .mechanism-visual {
+      .problem-grid {
         grid-template-columns: 1fr;
       }
-      .mechanism-step::after {
-        content: '↓';
-        right: 50%;
-        top: auto;
-        bottom: -1.5rem;
-        transform: translateX(50%);
-      }
     }
     
-    .insight-revelation {
-      background: linear-gradient(135deg, var(--color-surface-elevated) 0%, oklch(0.12 0.04 165) 100%);
-      border: 1px solid var(--color-primary);
-      border-radius: 1.5rem;
-      padding: 3rem;
+    .problem-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .insight-revelation::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent, var(--color-primary-glow), transparent);
-      animation: rotate-glow 10s linear infinite;
-      opacity: 0.3;
-    }
-    
-    @keyframes rotate-glow {
-      to { transform: rotate(360deg); }
-    }
-    
-    .insight-revelation h3 {
-      font-size: 1.5rem;
-      color: var(--color-primary-light);
-      position: relative;
-      z-index: 1;
-      margin-bottom: 1rem;
-    }
-    
-    .insight-revelation p {
-      font-size: 1.1rem;
-      color: var(--color-text);
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    /* ===== HOPE SECTION ===== */
-    .hope-section {
-      text-align: center;
-      position: relative;
-    }
-    
-    .hope-section::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--color-primary-glow) 0%, transparent 70%);
-      opacity: 0.2;
-      pointer-events: none;
-    }
-    
-    .hope-header {
-      margin-bottom: 3rem;
-    }
-    
-    .hope-header .eyebrow {
-      color: var(--color-primary);
-    }
-    
-    .hope-header h2 {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .research-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .research-card {
-      background: var(--color-surface);
-      border: 1px solid oklch(1 0 0 / 0.08);
-      border-radius: 1.5rem;
-      padding: 2.5rem;
-      text-align: left;
-      position: relative;
-      overflow: hidden;
       transition: all 0.3s ease;
     }
     
-    .research-card:hover {
-      border-color: var(--color-primary);
+    .problem-card:hover {
       transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
     
-    .research-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
-    }
-    
-    .research-icon {
-      width: 3.5rem;
-      height: 3.5rem;
+    .problem-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-surface-elevated);
-      border-radius: 1rem;
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      background: var(--color-danger-light);
     }
     
-    .research-card h4 {
-      font-family: var(--font-body);
-      font-size: 1.15rem;
+    .problem-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 12px;
+    }
+    
+    .problem-card p {
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+    
+    /* ===== STORY SECTION ===== */
+    .story-section {
+      padding: 100px 0;
+    }
+    
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+    
+    @media (max-width: 900px) {
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .story-image {
+      position: relative;
+    }
+    
+    .story-image-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--color-surface-alt);
+    }
+    
+    .story-image-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .story-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--color-accent);
+      color: var(--color-text);
+      padding: 20px 28px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .story-badge .value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    
+    .story-badge .label {
+      font-size: 0.85rem;
+    }
+    
+    .story-content .label {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(45, 143, 111, 0.1);
+      color: var(--color-primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    
+    .story-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      font-weight: 600;
+      margin-bottom: 24px;
+      line-height: 1.3;
+    }
+    
+    .story-content .story-text {
+      font-size: 1.05rem;
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    
+    .story-content .story-quote {
+      padding: 24px;
+      background: var(--color-surface-alt);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--color-text);
+      margin-bottom: 24px;
+    }
+    
+    .story-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .story-author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    
+    .story-author-info .name {
+      font-weight: 700;
       color: var(--color-text);
     }
     
-    .research-card p {
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
+    .story-author-info .title {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
     }
     
-    .research-card .source {
-      background: var(--color-surface-elevated);
+    /* ===== QUIZ SECTION ===== */
+    .quiz-section {
+      padding: 100px 0;
+      background: linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);
+    }
+    
+    .quiz-container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    
+    .quiz-header {
+      padding: 40px;
+      background: var(--color-primary);
+      color: white;
+      text-align: center;
+    }
+    
+    .quiz-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .quiz-header p {
+      opacity: 0.9;
+    }
+    
+    .quiz-progress {
+      height: 6px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+    
+    .quiz-progress-bar {
+      height: 100%;
+      background: white;
+      border-radius: 3px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+    
+    .quiz-body {
+      padding: 40px;
+    }
+    
+    .quiz-question {
+      display: none;
+    }
+    
+    .quiz-question.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .quiz-question h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .quiz-option {
+      padding: 18px 24px;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    
+    .quiz-option:hover {
+      border-color: var(--color-primary);
+      background: rgba(45, 143, 111, 0.05);
+    }
+    
+    .quiz-option.selected {
+      border-color: var(--color-primary);
+      background: rgba(45, 143, 111, 0.1);
+    }
+    
+    .quiz-option-marker {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--color-border);
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    
+    .quiz-option.selected .quiz-option-marker {
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+    }
+    
+    .quiz-option.selected .quiz-option-marker::after {
+      content: '✓';
+      color: white;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    
+    .quiz-option-text {
+      font-size: 1rem;
+    }
+    
+    /* Quiz Result */
+    .quiz-result {
+      display: none;
+      text-align: center;
+    }
+    
+    .quiz-result.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .result-score {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-danger-light);
+      border: 4px solid var(--color-danger);
+    }
+    
+    .result-score.medium {
+      background: var(--color-accent-light);
+      border-color: var(--color-accent);
+    }
+    
+    .result-score.good {
+      background: rgba(45, 143, 111, 0.1);
+      border-color: var(--color-primary);
+    }
+    
+    .result-score .value {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    
+    .result-score .label {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+    }
+    
+    .result-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .result-text {
+      color: var(--color-text-muted);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    
+    /* Form */
+    .quiz-form {
+      display: none;
+    }
+    
+    .quiz-form.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .form-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    
+    .form-header h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .form-header p {
+      color: var(--color-text-muted);
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    
+    .form-group input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border-color 0.2s ease;
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 18px;
+      background: var(--color-primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .form-submit:hover {
+      background: var(--color-primary-dark);
+    }
+    
+    .form-note {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--color-text-light);
     }
     
     /* ===== SOLUTION SECTION ===== */
     .solution-section {
-      background: linear-gradient(180deg, transparent 0%, var(--color-surface) 10%, var(--color-surface) 90%, transparent 100%);
+      padding: 100px 0;
     }
     
-    .solution-header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
-    
-    .solution-header h2 {
-      margin-bottom: 1rem;
-    }
-    
-    .solution-header p {
-      max-width: 600px;
-      margin: 0 auto;
-      font-size: 1.15rem;
-    }
-    
-    .products-grid {
+    .solution-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 60px;
     }
     
-    @media (max-width: 768px) {
-      .products-grid {
+    @media (max-width: 900px) {
+      .solution-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 500px) {
+      .solution-grid {
         grid-template-columns: 1fr;
       }
     }
     
-    .product-card {
-      background: var(--color-surface-elevated);
-      border: 1px solid oklch(1 0 0 / 0.08);
-      border-radius: 1.5rem;
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s ease;
-    }
-    
-    .product-card:hover {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 60px var(--color-primary-glow);
-    }
-    
-    .product-emoji {
-      font-size: 3rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .product-card h3 {
-      color: var(--color-primary-light);
-      margin-bottom: 0.5rem;
-    }
-    
-    .product-subtitle {
-      font-size: 0.9rem;
-      color: var(--color-text-dim);
-      margin-bottom: 1.5rem;
-    }
-    
-    .product-card h4 {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--color-text);
-      margin: 1.5rem 0 0.75rem;
-    }
-    
-    .product-card ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .product-card li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      color: var(--color-text-muted);
-    }
-    
-    .product-card li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--color-primary);
-      font-weight: 600;
-    }
-    
-    .product-science {
-      margin-top: 1.5rem;
-      padding: 1.25rem;
-      background: var(--color-surface);
-      border-radius: 1rem;
-      border-left: 3px solid var(--color-primary);
-    }
-    
-    .product-science p {
-      font-size: 0.9rem;
-      font-style: italic;
-      margin: 0;
-    }
-    
-    /* ===== TIMELINE SECTION ===== */
-    .timeline-section {
-      position: relative;
-    }
-    
-    .timeline-header {
+    .solution-card {
+      background: white;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
       text-align: center;
-      margin-bottom: 4rem;
+      transition: all 0.3s ease;
+    }
+    
+    .solution-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    
+    .solution-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(45, 143, 111, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+    
+    .solution-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--color-primary-dark);
+    }
+    
+    .solution-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    
+    /* ===== RESULTS TIMELINE ===== */
+    .timeline-section {
+      padding: 100px 0;
+      background: var(--color-surface);
     }
     
     .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--color-primary), var(--color-primary-light));
-      transform: translateX(-50%);
+      max-width: 600px;
+      margin: 60px auto 0;
     }
     
     .timeline-item {
       display: flex;
-      align-items: flex-start;
-      margin-bottom: 3rem;
+      gap: 24px;
+      margin-bottom: 32px;
       position: relative;
     }
     
-    .timeline-item:nth-child(odd) {
-      flex-direction: row-reverse;
-      text-align: right;
-    }
-    
-    .timeline-item:nth-child(odd) .timeline-content {
-      padding-right: 3rem;
-      padding-left: 0;
-    }
-    
-    .timeline-dot {
+    .timeline-item::before {
+      content: '';
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1rem;
-      height: 1rem;
-      background: var(--color-primary);
-      border-radius: 50%;
-      box-shadow: 0 0 20px var(--color-primary-glow);
-      z-index: 2;
+      left: 27px;
+      top: 60px;
+      bottom: -32px;
+      width: 2px;
+      background: var(--color-border);
     }
     
-    .timeline-content {
-      width: 50%;
-      padding-left: 3rem;
+    .timeline-item:last-child::before {
+      display: none;
     }
     
     .timeline-day {
-      font-family: var(--font-display);
-      font-size: 2rem;
+      width: 56px;
+      height: 56px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 700;
-      color: var(--color-primary-light);
-      margin-bottom: 0.5rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .timeline-content {
+      padding-top: 8px;
     }
     
     .timeline-content h4 {
-      font-family: var(--font-body);
       font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--color-text);
-      margin-bottom: 0.5rem;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
     
     .timeline-content p {
+      color: var(--color-text-muted);
       font-size: 0.95rem;
-    }
-    
-    @media (max-width: 768px) {
-      .timeline::before {
-        left: 1rem;
-      }
-      .timeline-item,
-      .timeline-item:nth-child(odd) {
-        flex-direction: row;
-        text-align: left;
-      }
-      .timeline-dot {
-        left: 1rem;
-      }
-      .timeline-content,
-      .timeline-item:nth-child(odd) .timeline-content {
-        width: calc(100% - 3rem);
-        padding-left: 3rem;
-        padding-right: 0;
-      }
     }
     
     /* ===== CTA SECTION ===== */
     .cta-section {
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 100% 100% at 50% 100%, var(--color-primary-glow) 0%, transparent 60%);
-      opacity: 0.3;
-    }
-    
-    .cta-box {
-      background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-surface-elevated) 100%);
-      border: 1px solid var(--color-primary);
-      border-radius: 2rem;
-      padding: clamp(2.5rem, 5vw, 4rem);
-      max-width: 700px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      box-shadow: 0 0 80px var(--color-primary-glow);
-    }
-    
-    .cta-box h2 {
-      margin-bottom: 1rem;
-    }
-    
-    .cta-box .lead {
-      margin-bottom: 2rem;
-      color: var(--color-text-muted);
-    }
-    
-    .price-comparison {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    
-    .price-old {
-      text-align: center;
-      opacity: 0.6;
-    }
-    
-    .price-old .label {
-      font-size: 0.85rem;
-      color: var(--color-text-dim);
-      margin-bottom: 0.25rem;
-    }
-    
-    .price-old .amount {
-      font-size: 1.5rem;
-      text-decoration: line-through;
-      color: var(--color-text-muted);
-    }
-    
-    .price-new {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+      color: white;
       text-align: center;
     }
     
-    .price-new .label {
-      font-size: 0.85rem;
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    .cta-section p {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-section .cta-btn {
+      background: white;
       color: var(--color-primary);
-      font-weight: 600;
-      margin-bottom: 0.25rem;
     }
     
-    .price-new .amount {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--color-primary-light);
-    }
-    
-    .cta-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1.25rem 2.5rem;
-      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-      color: oklch(0.10 0.02 180);
-      font-family: var(--font-body);
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 100px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px var(--color-primary-glow);
-    }
-    
-    .cta-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 15px 40px var(--color-primary-glow);
-    }
-    
-    .cta-button svg {
-      width: 20px;
-      height: 20px;
+    .cta-section .cta-btn:hover {
+      background: var(--color-bg);
+      transform: translateY(-2px);
     }
     
     .cta-benefits {
       display: flex;
       justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 32px;
+      margin-top: 32px;
       flex-wrap: wrap;
     }
     
     .cta-benefit {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
+      gap: 8px;
+      font-size: 0.95rem;
+      opacity: 0.9;
     }
     
     .cta-benefit::before {
       content: '✓';
-      color: var(--color-primary);
-      font-weight: 600;
-    }
-    
-    /* ===== FAQ SECTION ===== */
-    .faq-section {
-      background: var(--color-surface);
-    }
-    
-    .faq-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .faq-item {
-      border-bottom: 1px solid oklch(1 0 0 / 0.08);
-      padding: 1.5rem 0;
-    }
-    
-    .faq-question {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--color-text);
-      transition: color 0.2s ease;
-    }
-    
-    .faq-question:hover {
-      color: var(--color-primary-light);
-    }
-    
-    .faq-question::after {
-      content: '+';
-      font-size: 1.5rem;
-      color: var(--color-primary);
-      transition: transform 0.3s ease;
-    }
-    
-    .faq-item.active .faq-question::after {
-      transform: rotate(45deg);
-    }
-    
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-    }
-    
-    .faq-item.active .faq-answer {
-      max-height: 300px;
-      padding-top: 1rem;
-    }
-    
-    .faq-answer p {
-      font-size: 1rem;
-      line-height: 1.7;
+      font-weight: 700;
     }
     
     /* ===== FOOTER ===== */
     footer {
+      padding: 40px 0;
       text-align: center;
-      padding: 3rem 2rem;
-      border-top: 1px solid oklch(1 0 0 / 0.06);
+      border-top: 1px solid var(--color-border);
     }
     
     footer p {
       font-size: 0.85rem;
-      color: var(--color-text-dim);
+      color: var(--color-text-light);
     }
     
-    /* Scroll animations */
-    .reveal {
+    /* Animations */
+    .fade-in {
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(20px);
+      transition: all 0.6s ease;
     }
     
-    .reveal.visible {
+    .fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
     
-    /* Stagger children */
-    .stagger-children > * {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    
-    .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; }
-    .stagger-children.visible > *:nth-child(2) { transition-delay: 100ms; }
-    .stagger-children.visible > *:nth-child(3) { transition-delay: 200ms; }
-    .stagger-children.visible > *:nth-child(4) { transition-delay: 300ms; }
-    .stagger-children.visible > *:nth-child(5) { transition-delay: 400ms; }
-    .stagger-children.visible > *:nth-child(6) { transition-delay: 500ms; }
-    
-    .stagger-children.visible > * {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    
-    /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
-      }
-      .reveal, .stagger-children > * {
-        opacity: 1;
-        transform: none;
       }
     }
   </style>
 </head>
 <body>
-  <div class="aurora-bg"></div>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">Coral Detox</a>
+      <div class="header-badge">
+        <span>🎁</span>
+        <span>Скидка 20%</span>
+      </div>
+    </div>
+  </header>
   
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span>🧬 Научный подход</span> к очищению организма
-      </div>
-      <h1>Ваш организм отравляется каждый день</h1>
-      <p class="hero-subtitle">
-        И вы даже не замечаете этого. Усталость, отёки, туман в голове — это не «возраст». 
-        Это сигналы SOS от вашей перегруженной печени.
-      </p>
-      <div class="hero-stats">
-        <div class="stat">
-          <div class="stat-number">2 кг</div>
-          <div class="stat-label">токсинов ежедневно</div>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1>Узнайте, насколько <span>зашлакован</span> ваш организм</h1>
+          <p class="lead">
+            Пройдите 2-минутный тест и получите персональные рекомендации 
+            по очищению организма от токсинов.
+          </p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">12 847</div>
+              <div class="stat-label">прошли тест</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">93%</div>
+              <div class="stat-label">довольны результатом</div>
+            </div>
+          </div>
+          <a href="#quiz" class="cta-btn">
+            Пройти тест бесплатно
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <p class="hero-note">⏱ Занимает 2 минуты. Без регистрации.</p>
         </div>
-        <div class="stat">
-          <div class="stat-number">80 000+</div>
-          <div class="stat-label">химических соединений</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">10×</div>
-          <div class="stat-label">перегрузка печени</div>
+        <div class="hero-visual">
+          <div class="hero-image" id="hero-img">
+            <div class="shimmer"></div>
+          </div>
+          <div class="floating-card card-1">
+            <div class="icon">⚡</div>
+            <div class="text">+40% энергии</div>
+            <div class="subtext">за 7 дней</div>
+          </div>
+          <div class="floating-card card-2">
+            <div class="icon">✨</div>
+            <div class="text">Чистая кожа</div>
+            <div class="subtext">без высыпаний</div>
+          </div>
         </div>
       </div>
     </div>
-    <a href="#symptoms" class="hero-scroll">
-      <span>Узнай правду</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M12 5v14M5 12l7 7 7-7"/>
-      </svg>
-    </a>
   </section>
   
-  <!-- PAIN SECTION -->
-  <section class="pain-section" id="symptoms">
+  <!-- PROBLEM SECTION -->
+  <section class="problem-section">
     <div class="container">
-      <span class="eyebrow reveal">⚠️ Проверь себя</span>
-      <h2 class="reveal">Узнаёте симптомы?</h2>
-      <p class="lead reveal" style="max-width: 600px;">
-        Большинство людей живут с этими проблемами годами, считая их «нормой». 
-        Но это не норма — это хроническая интоксикация.
-      </p>
+      <div class="section-header fade-in">
+        <span class="section-label">⚠️ Проблема</span>
+        <h2>Узнаёте себя?</h2>
+        <p>Эти симптомы говорят о том, что вашему организму нужна помощь</p>
+      </div>
       
-      <div class="symptoms-grid stagger-children">
-        <div class="symptom-card">
-          <div class="symptom-icon">😴</div>
-          <h3>Хроническая усталость</h3>
-          <p>Просыпаетесь разбитым, даже после 8 часов сна. К обеду хочется лечь. Кофе уже не помогает.</p>
+      <div class="problem-grid">
+        <div class="problem-card fade-in">
+          <div class="problem-icon">😴</div>
+          <h3>Постоянная усталость</h3>
+          <p>Просыпаетесь разбитым даже после 8 часов сна. Кофе уже не помогает.</p>
         </div>
-        <div class="symptom-card">
-          <div class="symptom-icon">🍕</div>
-          <h3>Вздутие и тяжесть</h3>
-          <p>После еды — камень в животе. Джинсы жмут к вечеру. Газы. Изжога. И так каждый день.</p>
-        </div>
-        <div class="symptom-card">
-          <div class="symptom-icon">😤</div>
-          <h3>Проблемы с кожей</h3>
-          <p>Акне в 30+. Тусклый цвет лица. Отёки по утрам. Никакая косметика не помогает.</p>
-        </div>
-        <div class="symptom-card">
-          <div class="symptom-icon">🧠</div>
+        <div class="problem-card fade-in">
+          <div class="problem-icon">🤯</div>
           <h3>Туман в голове</h3>
-          <p>Сложно сконцентрироваться. Забываете слова. К вечеру мозг отказывает думать.</p>
+          <p>Сложно сконцентрироваться. Забываете простые вещи. К вечеру мозг отключается.</p>
         </div>
-        <div class="symptom-card">
-          <div class="symptom-icon">⚖️</div>
-          <h3>Лишний вес</h3>
-          <p>Диеты не работают. Спорт не помогает. Килограммы возвращаются. Живот не уходит.</p>
+        <div class="problem-card fade-in">
+          <div class="problem-icon">⚖️</div>
+          <h3>Вес не уходит</h3>
+          <p>Диеты не работают. Живот не уменьшается. Килограммы возвращаются.</p>
         </div>
-        <div class="symptom-card">
-          <div class="symptom-icon">💤</div>
-          <h3>Плохой сон</h3>
-          <p>Долго засыпаете. Просыпаетесь среди ночи. Утром — как не спали вообще.</p>
-        </div>
-      </div>
-      
-      <div class="pain-question reveal">
-        <h2>Узнали себя в 3+ пунктах?</h2>
-        <p>Это не усталость от работы. Не возраст. Не «так бывает». Это ваш организм кричит о помощи.</p>
       </div>
     </div>
   </section>
   
-  <!-- MORE PAIN - SCARY FACTS -->
-  <section class="scary-section">
+  <!-- STORY SECTION -->
+  <section class="story-section">
     <div class="container">
-      <div style="text-align: center; margin-bottom: 4rem;">
-        <span class="eyebrow reveal">💀 Неприятная правда</span>
-        <h2 class="reveal">Что происходит внутри</h2>
-      </div>
-      
-      <div class="scary-facts">
-        <div class="scary-fact reveal">
-          <div class="fact-visual">
-            <div class="shimmer" id="img-toxins"></div>
+      <div class="story-grid">
+        <div class="story-image fade-in">
+          <div class="story-image-main" id="story-img">
+            <div class="shimmer"></div>
           </div>
-          <div class="fact-content">
-            <div class="fact-number">82%</div>
-            <h3>Токсины накапливаются в жировых клетках</h3>
-            <p>Тяжёлые металлы, пестициды, консерванты — всё это не выводится, а <strong>складируется</strong> в жире. Чем больше токсинов — тем упорнее организм держит жир как «контейнер».</p>
-            <p>Вот почему диеты не работают: вы теряете воду, но жир с токсинами остаётся.</p>
-            <span class="source">Environmental Health Perspectives, 2019</span>
+          <div class="story-badge">
+            <div class="value">-7 кг</div>
+            <div class="label">за 30 дней</div>
+          </div>
+        </div>
+        <div class="story-content fade-in">
+          <span class="label">История Анны</span>
+          <h2>«Я думала, это просто возраст. Оказалось — интоксикация»</h2>
+          <p class="story-text">
+            В 35 лет я чувствовала себя на 50. Постоянная усталость, отёки по утрам, 
+            кожа как у подростка — прыщи не проходили. Врачи говорили «всё в норме».
+          </p>
+          <p class="story-text">
+            Когда узнала про детокс-программу, не верила что поможет. Но уже через неделю 
+            почувствовала разницу: энергия появилась, отёки ушли, голова стала ясной.
+          </p>
+          <blockquote class="story-quote">
+            «За месяц ушло 7 кг, которые не уходили 3 года на диетах. 
+            Оказывается, организм просто был забит токсинами.»
+          </blockquote>
+          <div class="story-author">
+            <div class="story-author-avatar">А</div>
+            <div class="story-author-info">
+              <div class="name">Анна Ковалёва</div>
+              <div class="title">35 лет, Москва</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- QUIZ SECTION -->
+  <section class="quiz-section" id="quiz">
+    <div class="container">
+      <div class="quiz-container">
+        <div class="quiz-header">
+          <h2>🧪 Тест на интоксикацию</h2>
+          <p>Ответьте на 5 вопросов и узнайте свой уровень</p>
+          <div class="quiz-progress">
+            <div class="quiz-progress-bar" id="progress-bar"></div>
           </div>
         </div>
         
-        <div class="scary-fact reveal">
-          <div class="fact-visual">
-            <div class="shimmer" id="img-liver"></div>
+        <div class="quiz-body">
+          <!-- Question 1 -->
+          <div class="quiz-question active" data-question="1">
+            <h3>Как вы чувствуете себя по утрам?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option" data-score="0">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Бодро, полон сил</div>
+              </div>
+              <div class="quiz-option" data-score="1">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Нормально, но нужен кофе</div>
+              </div>
+              <div class="quiz-option" data-score="2">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Тяжело встаю, разбитость</div>
+              </div>
+              <div class="quiz-option" data-score="3">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Ужасно, как будто не спал</div>
+              </div>
+            </div>
           </div>
-          <div class="fact-content">
-            <div class="fact-number">10×</div>
-            <h3>Печень работает на пределе</h3>
-            <p>Наша печень была «спроектирована» для нагрузки в <strong>10 раз меньше</strong> современной. Она фильтрует 1.5 литра крови в минуту, но химикаты XXI века ей не по силам.</p>
-            <p>Когда печень не справляется — токсины идут в мозг, кожу, суставы.</p>
-            <span class="source">Journal of Hepatology, 2021</span>
+          
+          <!-- Question 2 -->
+          <div class="quiz-question" data-question="2">
+            <h3>Бывает ли у вас вздутие живота после еды?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option" data-score="0">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Нет, никогда</div>
+              </div>
+              <div class="quiz-option" data-score="1">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Редко, после тяжёлой пищи</div>
+              </div>
+              <div class="quiz-option" data-score="2">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Часто, почти каждый день</div>
+              </div>
+              <div class="quiz-option" data-score="3">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Постоянно, независимо от еды</div>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        <div class="scary-fact reveal">
-          <div class="fact-visual">
-            <div class="shimmer" id="img-gut"></div>
+          
+          <!-- Question 3 -->
+          <div class="quiz-question" data-question="3">
+            <h3>Как обстоят дела с кожей?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option" data-score="0">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Чистая и здоровая</div>
+              </div>
+              <div class="quiz-option" data-score="1">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">В целом нормально, бывают мелкие проблемы</div>
+              </div>
+              <div class="quiz-option" data-score="2">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Тусклая, периодически высыпания</div>
+              </div>
+              <div class="quiz-option" data-score="3">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Проблемная: акне, сухость или жирность</div>
+              </div>
+            </div>
           </div>
-          <div class="fact-content">
-            <div class="fact-number">80%</div>
-            <h3>Иммунитет живёт в кишечнике</h3>
-            <p>В кишечнике — <strong>80% иммунных клеток</strong>. Если там гниёт пища и размножаются патогены — страдает весь организм. Аллергии, частые простуды, аутоиммунные болезни.</p>
-            <p>«Протекающий кишечник» — когда токсины просачиваются в кровь.</p>
-            <span class="source">Gut Microbes Journal, 2020</span>
+          
+          <!-- Question 4 -->
+          <div class="quiz-question" data-question="4">
+            <h3>Как часто вы чувствуете «туман в голове»?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option" data-score="0">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Никогда, голова всегда ясная</div>
+              </div>
+              <div class="quiz-option" data-score="1">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Иногда, когда устаю</div>
+              </div>
+              <div class="quiz-option" data-score="2">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Регулярно, сложно сконцентрироваться</div>
+              </div>
+              <div class="quiz-option" data-score="3">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Постоянно, забываю простые вещи</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- INSIGHT SECTION -->
-  <section class="insight-section">
-    <div class="container">
-      <div class="insight-header">
-        <span class="eyebrow reveal">💡 То, чего вы не знали</span>
-        <h2 class="reveal">Почему детокс-соки и диеты не работают</h2>
-        <p class="lead reveal">Большинство «детоксов» — маркетинг. Вот как на самом деле работает очищение.</p>
-      </div>
-      
-      <div class="mechanism-visual stagger-children">
-        <div class="mechanism-step">
-          <div class="step-number">1</div>
-          <h4>Токсины попадают в кровь</h4>
-          <p>Через еду, воду, воздух, кожу. 80 000+ химикатов ежедневно.</p>
-        </div>
-        <div class="mechanism-step">
-          <div class="step-number">2</div>
-          <h4>Печень пытается их обезвредить</h4>
-          <p>Связывает токсины с желчью и отправляет в кишечник.</p>
-        </div>
-        <div class="mechanism-step">
-          <div class="step-number">3</div>
-          <h4>Кишечник должен вывести</h4>
-          <p>Но если он «забит» — токсины всасываются обратно в кровь!</p>
-        </div>
-      </div>
-      
-      <div class="insight-revelation reveal">
-        <h3>🔄 Замкнутый круг интоксикации</h3>
-        <p>
-          Вот почему зелёные смузи не помогают: они не решают проблему на уровне печени и кишечника. 
-          Токсины продолжают циркулировать. Нужна <strong>системная поддержка всех органов выведения</strong> — 
-          не один продукт, а комплекс.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- HOPE SECTION -->
-  <section class="hope-section">
-    <div class="container">
-      <div class="hope-header">
-        <span class="eyebrow reveal">✨ Но есть хорошая новость</span>
-        <h2 class="reveal">Организм умеет восстанавливаться.<br>Если ему помочь.</h2>
-      </div>
-      
-      <div class="research-cards stagger-children">
-        <div class="research-card">
-          <div class="research-icon">🏝️</div>
-          <h4>Феномен Окинавы</h4>
-          <p>Жители японского острова Окинава живут дольше всех в мире — средний возраст 85+ лет. Секрет? Они пьют воду, обогащённую кораллом Санго уже 1000 лет.</p>
-          <span class="source">Окинавский центр долголетия, 2018</span>
-        </div>
-        <div class="research-card">
-          <div class="research-icon">⚡</div>
-          <h4>Антиоксиданты работают</h4>
-          <p>Гидрид кремния — самый мощный донор электронов в природе. Нейтрализует свободные радикалы в 1000 раз эффективнее витамина C.</p>
-          <span class="source">Free Radical Research, 2017</span>
-        </div>
-        <div class="research-card">
-          <div class="research-icon">🧪</div>
-          <h4>Ферменты — ключ к пищеварению</h4>
-          <p>После 25 лет выработка пищеварительных ферментов падает на 13% каждые 10 лет. К 50 годам — вдвое меньше, чем нужно для нормального переваривания.</p>
-          <span class="source">Digestive Diseases and Sciences, 2019</span>
-        </div>
-        <div class="research-card">
-          <div class="research-icon">🛡️</div>
-          <h4>Печень восстанавливается</h4>
-          <p>Печень — единственный орган, способный полностью регенерировать. При правильной поддержке лецитином она восстанавливает до 70% функций за 30 дней.</p>
-          <span class="source">Hepatology International, 2020</span>
+          
+          <!-- Question 5 -->
+          <div class="quiz-question" data-question="5">
+            <h3>Пробовали ли вы диеты для похудения?</h3>
+            <div class="quiz-options">
+              <div class="quiz-option" data-score="0">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Нет, вес в норме</div>
+              </div>
+              <div class="quiz-option" data-score="1">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Да, и они работают</div>
+              </div>
+              <div class="quiz-option" data-score="2">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Да, но вес возвращается</div>
+              </div>
+              <div class="quiz-option" data-score="3">
+                <div class="quiz-option-marker"></div>
+                <div class="quiz-option-text">Много раз, ничего не помогает</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Result -->
+          <div class="quiz-result" id="quiz-result">
+            <div class="result-score" id="result-score">
+              <div class="value" id="score-value">0</div>
+              <div class="label">из 15</div>
+            </div>
+            <h3 class="result-title" id="result-title">Ваш результат</h3>
+            <p class="result-text" id="result-text">Описание результата</p>
+          </div>
+          
+          <!-- Form -->
+          <div class="quiz-form" id="quiz-form">
+            <div class="form-header">
+              <h3>Получите персональный план детокса</h3>
+              <p>Бесплатно + скидка 20% на продукты</p>
+            </div>
+            <form id="lead-form">
+              <div class="form-group">
+                <label for="name">Ваше имя</label>
+                <input type="text" id="name" placeholder="Анна" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="anna@example.com" required>
+              </div>
+              <button type="submit" class="form-submit">
+                Получить план бесплатно →
+              </button>
+            </form>
+            <p class="form-note">🔒 Данные защищены. Без спама.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1362,75 +1282,32 @@
   <!-- SOLUTION SECTION -->
   <section class="solution-section">
     <div class="container">
-      <div class="solution-header">
-        <span class="eyebrow reveal">🧬 Решение</span>
-        <h2 class="reveal">Coral Detox: 4 продукта = полный цикл очищения</h2>
-        <p class="reveal">30 дней системной поддержки всех органов выведения. Без голодания, без диет, без побочек.</p>
+      <div class="section-header fade-in">
+        <span class="section-label green">✨ Решение</span>
+        <h2>Система Coral Detox</h2>
+        <p>4 продукта работают вместе, чтобы запустить естественное очищение организма</p>
       </div>
       
-      <div class="products-grid stagger-children">
-        <div class="product-card">
-          <div class="product-emoji">💧</div>
+      <div class="solution-grid">
+        <div class="solution-card fade-in">
+          <div class="solution-icon">💧</div>
           <h3>Coral-Mine</h3>
-          <p class="product-subtitle">Коралловая вода</p>
-          <p>Измельчённый коралл Санго из Окинавы превращает обычную воду в живую.</p>
-          <h4>Что делает:</h4>
-          <ul>
-            <li>Ощелачивает воду до pH 8.5-9</li>
-            <li>Насыщает 70+ минералами в ионной форме</li>
-            <li>Улучшает гидратацию клеток на 40%</li>
-          </ul>
-          <div class="product-science">
-            <p>💡 Коралл Санго — тот самый секрет долголетия жителей Окинавы.</p>
-          </div>
+          <p>Живая вода с минералами. Улучшает гидратацию клеток на 40%.</p>
         </div>
-        
-        <div class="product-card">
-          <div class="product-emoji">⚡</div>
+        <div class="solution-card fade-in">
+          <div class="solution-icon">⚡</div>
           <h3>H-500</h3>
-          <p class="product-subtitle">Антиоксидант</p>
-          <p>Гидрид кремния — самый мощный донор электронов в природе.</p>
-          <h4>Что делает:</h4>
-          <ul>
-            <li>Нейтрализует свободные радикалы</li>
-            <li>Защищает клетки от окислительного стресса</li>
-            <li>Даёт энергию без кофеина</li>
-          </ul>
-          <div class="product-science">
-            <p>💡 1 капсула = антиоксидантная сила 10 000 стаканов свежевыжатого сока.</p>
-          </div>
+          <p>Мощный антиоксидант. Даёт энергию без кофеина.</p>
         </div>
-        
-        <div class="product-card">
-          <div class="product-emoji">🧪</div>
+        <div class="solution-card fade-in">
+          <div class="solution-icon">🧪</div>
           <h3>Assimilator</h3>
-          <p class="product-subtitle">Ферменты</p>
-          <p>Комплекс растительных ферментов + витамины A и D.</p>
-          <h4>Что делает:</h4>
-          <ul>
-            <li>Расщепляет белки, жиры, углеводы</li>
-            <li>Предотвращает гниение пищи в кишечнике</li>
-            <li>Снимает нагрузку с поджелудочной</li>
-          </ul>
-          <div class="product-science">
-            <p>💡 Восполняет дефицит ферментов, который накапливается после 25 лет.</p>
-          </div>
+          <p>Ферменты для пищеварения. Убирает вздутие и тяжесть.</p>
         </div>
-        
-        <div class="product-card">
-          <div class="product-emoji">🛡️</div>
-          <h3>Coral Lecithin</h3>
-          <p class="product-subtitle">Лецитин</p>
-          <p>Фосфолипиды из соевых бобов для защиты печени.</p>
-          <h4>Что делает:</h4>
-          <ul>
-            <li>Защищает мембраны клеток печени</li>
-            <li>Помогает выводить жирорастворимые токсины</li>
-            <li>Улучшает работу мозга и память</li>
-          </ul>
-          <div class="product-science">
-            <p>💡 Печень на 65% состоит из лецитина. При дефиците — жировой гепатоз.</p>
-          </div>
+        <div class="solution-card fade-in">
+          <div class="solution-icon">🛡️</div>
+          <h3>Lecithin</h3>
+          <p>Защита печени. Помогает выводить токсины.</p>
         </div>
       </div>
     </div>
@@ -1439,45 +1316,39 @@
   <!-- TIMELINE SECTION -->
   <section class="timeline-section">
     <div class="container">
-      <div class="timeline-header">
-        <span class="eyebrow reveal">📅 Что вас ждёт</span>
-        <h2 class="reveal">Результаты по дням</h2>
+      <div class="section-header fade-in">
+        <span class="section-label green">📅 Результаты</span>
+        <h2>Что вы почувствуете</h2>
+        <p>Изменения начинаются уже с первой недели</p>
       </div>
       
       <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-day">3-5</div>
           <div class="timeline-content">
-            <div class="timeline-day">День 3-5</div>
-            <h4>Первые изменения</h4>
-            <p>Уходит вздутие. Лёгкость после еды. Меньше газов и тяжести. Вы начинаете чувствовать, что что-то меняется.</p>
+            <h4>Уходит вздутие</h4>
+            <p>Лёгкость после еды. Живот становится плоским к вечеру.</p>
           </div>
         </div>
-        
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-day">7-10</div>
           <div class="timeline-content">
-            <div class="timeline-day">День 7-10</div>
-            <h4>Энергия возвращается</h4>
-            <p>Больше сил в течение дня. Легче просыпаться. Меньше нужен кофе. Сон становится глубже.</p>
+            <h4>Появляется энергия</h4>
+            <p>Легче просыпаться. Меньше нужен кофе. Голова ясная.</p>
           </div>
         </div>
-        
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-day">14-21</div>
           <div class="timeline-content">
-            <div class="timeline-day">День 14-21</div>
-            <h4>Видимые результаты</h4>
-            <p>Кожа становится чище. Уходят отёки с лица. Цвет лица свежее. Голова яснее, концентрация лучше.</p>
+            <h4>Видимые изменения</h4>
+            <p>Кожа чище. Отёки уходят. Цвет лица свежее.</p>
           </div>
         </div>
-        
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-day">30</div>
           <div class="timeline-content">
-            <div class="timeline-day">День 30</div>
             <h4>Трансформация</h4>
-            <p>Минус 2-5 кг за счёт воды и шлаков. Плоский живот. Стабильная энергия. Вы чувствуете себя на 5 лет моложе.</p>
+            <p>Минус 2-5 кг. Стабильная энергия. Вы чувствуете себя моложе.</p>
           </div>
         </div>
       </div>
@@ -1487,81 +1358,18 @@
   <!-- CTA SECTION -->
   <section class="cta-section">
     <div class="container">
-      <div class="cta-box reveal">
-        <span class="eyebrow">🎁 Специальное предложение</span>
-        <h2>Получите скидку 20% навсегда</h2>
-        <p class="lead">Бесплатная регистрация в клубе — 2 минуты. Скидка активируется сразу и действует на ВСЕ продукты пожизненно.</p>
-        
-        <div class="price-comparison">
-          <div class="price-old">
-            <div class="label">В розницу</div>
-            <div class="amount">~$85</div>
-          </div>
-          <div class="price-new">
-            <div class="label">В клубе</div>
-            <div class="amount">~$68</div>
-          </div>
-        </div>
-        
-        <a href="#" class="cta-button" id="cta-main">
-          Получить скидку 20%
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </a>
-        
-        <div class="cta-benefits">
-          <span class="cta-benefit">Бесплатная регистрация</span>
-          <span class="cta-benefit">Никаких обязательств</span>
-          <span class="cta-benefit">Скидка навсегда</span>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- FAQ SECTION -->
-  <section class="faq-section">
-    <div class="container container--narrow">
-      <div class="faq-header">
-        <span class="eyebrow reveal">❓ Вопросы</span>
-        <h2 class="reveal">Частые вопросы</h2>
-      </div>
-      
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-question">Это БАД или лекарство?</div>
-          <div class="faq-answer">
-            <p>БАД — биологически активные добавки. Не лечат болезни, но поддерживают здоровье и помогают организму справляться с нагрузками. Это профилактика, а не лечение.</p>
-          </div>
-        </div>
-        
-        <div class="faq-item">
-          <div class="faq-question">Есть противопоказания?</div>
-          <div class="faq-answer">
-            <p>Беременность, кормление грудью, индивидуальная непереносимость компонентов. При хронических заболеваниях рекомендуется консультация врача.</p>
-          </div>
-        </div>
-        
-        <div class="faq-item">
-          <div class="faq-question">Почему именно Coral Club?</div>
-          <div class="faq-answer">
-            <p>30+ лет на рынке, продукция в 40 странах мира, собственное производство, международные сертификаты GMP. Это не однодневка — проверенный временем бренд.</p>
-          </div>
-        </div>
-        
-        <div class="faq-item">
-          <div class="faq-question">А если не поможет?</div>
-          <div class="faq-answer">
-            <p>Начните с малого — попробуйте только Coral-Mine. Почувствуете разницу уже через неделю. Если понравится — добавите остальные продукты.</p>
-          </div>
-        </div>
-        
-        <div class="faq-item">
-          <div class="faq-question">Как долго нужно принимать?</div>
-          <div class="faq-answer">
-            <p>Базовый курс — 30 дней. Для глубокого результата рекомендуется 2-3 курса в год. Коралловую воду можно пить постоянно как основу здорового образа жизни.</p>
-          </div>
-        </div>
+      <h2>Готовы почувствовать себя лучше?</h2>
+      <p>Пройдите тест и получите персональный план детокса + скидку 20%</p>
+      <a href="#quiz" class="cta-btn">
+        Пройти тест бесплатно
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <div class="cta-benefits">
+        <span class="cta-benefit">Бесплатно</span>
+        <span class="cta-benefit">2 минуты</span>
+        <span class="cta-benefit">Персональные рекомендации</span>
       </div>
     </div>
   </section>
@@ -1569,7 +1377,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <p>© 2025 | Информация носит ознакомительный характер и не является медицинской рекомендацией</p>
+      <p>© 2025 Coral Club | Информация не является медицинской рекомендацией</p>
     </div>
   </footer>
   
@@ -1577,84 +1385,145 @@
   <script src="https://js.puter.com/v2/"></script>
   
   <script>
-    // Scroll reveal animation
-    const revealElements = document.querySelectorAll('.reveal, .stagger-children');
+    // ===== QUIZ LOGIC =====
+    let currentQuestion = 1;
+    let totalScore = 0;
+    const totalQuestions = 5;
     
-    const revealOnScroll = () => {
-      revealElements.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+    document.querySelectorAll('.quiz-option').forEach(option => {
+      option.addEventListener('click', function() {
+        const question = this.closest('.quiz-question');
+        const options = question.querySelectorAll('.quiz-option');
         
-        if (rect.top < windowHeight * 0.85) {
-          el.classList.add('visible');
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll);
-    
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', () => {
-        const item = question.parentElement;
-        const isActive = item.classList.contains('active');
+        // Deselect all
+        options.forEach(opt => opt.classList.remove('selected'));
         
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        // Select clicked
+        this.classList.add('selected');
         
-        // Toggle current
-        if (!isActive) {
-          item.classList.add('active');
-        }
+        // Get score
+        const score = parseInt(this.dataset.score);
+        totalScore += score;
+        
+        // Next question after delay
+        setTimeout(() => {
+          if (currentQuestion < totalQuestions) {
+            question.classList.remove('active');
+            currentQuestion++;
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+            
+            // Update progress
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+          } else {
+            // Show result
+            showResult();
+          }
+        }, 300);
       });
     });
     
-    // Generate AI images
+    function showResult() {
+      document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+      
+      const resultEl = document.getElementById('quiz-result');
+      const scoreEl = document.getElementById('result-score');
+      const scoreValueEl = document.getElementById('score-value');
+      const titleEl = document.getElementById('result-title');
+      const textEl = document.getElementById('result-text');
+      
+      scoreValueEl.textContent = totalScore;
+      
+      // Update progress to 100%
+      document.getElementById('progress-bar').style.width = '100%';
+      
+      if (totalScore <= 5) {
+        scoreEl.classList.add('good');
+        titleEl.textContent = '✅ Низкий уровень интоксикации';
+        textEl.textContent = 'Ваш организм в хорошем состоянии! Профилактический детокс поможет поддержать здоровье и предотвратить накопление токсинов.';
+      } else if (totalScore <= 10) {
+        scoreEl.classList.add('medium');
+        titleEl.textContent = '⚠️ Средний уровень интоксикации';
+        textEl.textContent = 'Вашему организму нужна поддержка. Детокс-программа поможет вернуть энергию, улучшить пищеварение и очистить кожу.';
+      } else {
+        titleEl.textContent = '🚨 Высокий уровень интоксикации';
+        textEl.textContent = 'Вашему организму срочно нужна помощь! Токсины накопились и мешают нормальной работе. Детокс-программа — то, что нужно.';
+      }
+      
+      resultEl.classList.add('active');
+      
+      // Show form after delay
+      setTimeout(() => {
+        document.getElementById('quiz-form').classList.add('active');
+      }, 1500);
+    }
+    
+    // Form submit
+    document.getElementById('lead-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      
+      // Here you would send to your backend
+      alert(`Спасибо, ${name}! Проверьте почту ${email} — мы отправили ваш персональный план.`);
+    });
+    
+    // ===== SCROLL ANIMATIONS =====
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeElements.forEach(el => observer.observe(el));
+    
+    // ===== AI IMAGE GENERATION =====
     async function generateImages() {
-      const imagePrompts = [
+      const images = [
         {
-          id: 'img-toxins',
-          prompt: 'Abstract visualization of toxic molecules trapped in adipose tissue cells, dark moody medical illustration style, deep teal and red color palette, microscopic view, scientific visualization, 4:3 aspect ratio'
+          id: 'hero-img',
+          prompt: 'Serene woman with glowing healthy skin, surrounded by soft green leaves and natural elements, wellness editorial photography style, soft natural lighting, peaceful expression, clean minimal composition, light beige and sage green color palette, magazine cover quality, 1:1 aspect ratio'
         },
         {
-          id: 'img-liver',
-          prompt: 'Stylized human liver under stress with glowing toxin particles flowing through it, dark background, medical illustration style, teal and amber glow effects, dramatic lighting, 4:3 aspect ratio'
-        },
-        {
-          id: 'img-gut',
-          prompt: 'Cross-section of human intestine with microbiome visualization, good bacteria vs bad bacteria battle, dark moody medical illustration, teal and purple color palette, scientific art style, 4:3 aspect ratio'
+          id: 'story-img',
+          prompt: 'Happy confident woman in her 30s, natural makeup, radiating health and energy, lifestyle portrait photography, soft window light, wearing casual white clothes, warm genuine smile, clean background with subtle green plants, wellness transformation, editorial style, 4:5 aspect ratio'
         }
       ];
       
-      for (const img of imagePrompts) {
+      for (const img of images) {
         try {
           const container = document.getElementById(img.id);
           if (!container) continue;
+          
+          const shimmer = container.querySelector('.shimmer');
           
           const imageElement = await puter.ai.txt2img(img.prompt, { 
             model: 'gemini-2.5-flash-image-preview' 
           });
           
           if (imageElement && imageElement.src) {
-            container.classList.remove('shimmer');
-            container.style.backgroundImage = `url(${imageElement.src})`;
-            container.style.backgroundSize = 'cover';
-            container.style.backgroundPosition = 'center';
+            if (shimmer) shimmer.remove();
+            const imgTag = document.createElement('img');
+            imgTag.src = imageElement.src;
+            imgTag.alt = 'Wellness illustration';
+            container.appendChild(imgTag);
           }
         } catch (err) {
           console.log('Image generation skipped:', img.id);
-          // Keep shimmer as fallback
         }
       }
     }
     
-    // Start image generation after page load
+    // Start image generation
     window.addEventListener('load', () => {
-      setTimeout(generateImages, 1000);
+      setTimeout(generateImages, 500);
     });
     
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
